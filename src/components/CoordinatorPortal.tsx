@@ -64,14 +64,14 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
       {/* Placement Coordinator Header */}
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div className="flex items-center space-x-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-800 flex items-center justify-center text-white font-black text-xl shadow-md shadow-purple-600/30">
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-700 to-emerald-800 flex items-center justify-center text-white font-black text-xl shadow-md shadow-teal-600/25">
             <BarChart3 className="w-7 h-7" />
           </div>
           <div>
             <div className="flex items-center space-x-3">
-              <h1 className="text-xl font-bold text-slate-900">Placement Coordinator Dashboard</h1>
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-100 text-purple-800 border border-purple-200">
-                Official Placement Office
+              <h1 className="text-xl font-bold text-slate-900">Placement Office Overview</h1>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-teal-100 text-teal-900 border border-teal-200">
+                Admin Console
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -84,7 +84,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
           onClick={loadReports}
           className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition"
         >
-          <span>Refresh Analytics</span>
+          <span>Refresh Metrics</span>
         </button>
       </div>
 
@@ -106,7 +106,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
         <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Average Package</span>
-            <Award className="w-4 h-4 text-indigo-600" />
+            <Award className="w-4 h-4 text-teal-700" />
           </div>
           <p className="text-2xl font-black text-slate-900 mt-1">
             {summary?.avg_package_lpa || 0} <span className="text-sm font-semibold text-slate-500">LPA</span>
@@ -132,7 +132,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
         <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Active Drives</span>
-            <Briefcase className="w-4 h-4 text-purple-600" />
+            <Briefcase className="w-4 h-4 text-teal-700" />
           </div>
           <p className="text-2xl font-black text-slate-900 mt-1">
             {summary?.total_jobs || 0}
@@ -149,7 +149,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
           onClick={() => setActiveTab('OVERVIEW')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'OVERVIEW'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
@@ -161,43 +161,43 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
           onClick={() => setActiveTab('BRANCHES')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'BRANCHES'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <Users className="w-4 h-4" />
-          <span>Branch-wise Breakdown</span>
+          <span>Branch Performance</span>
         </button>
 
         <button
           onClick={() => setActiveTab('COMPANIES')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'COMPANIES'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <Briefcase className="w-4 h-4" />
-          <span>Company Recruiter Stats</span>
+          <span>Recruiter Performance</span>
         </button>
 
         <button
           onClick={() => setActiveTab('AUDIT_LOGS')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'AUDIT_LOGS'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <ShieldCheck className="w-4 h-4" />
-          <span>Audit & Compliance Logs</span>
+          <span>Audit Trail</span>
         </button>
       </div>
 
       {/* TAB 1: FUNNEL OVERVIEW */}
       {activeTab === 'OVERVIEW' && (
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-6">
-          <h3 className="text-base font-bold text-slate-900">Placement Pipeline Funnel</h3>
+          <h3 className="text-base font-bold text-slate-900">Recruitment Pipeline</h3>
           
           <div className="space-y-4">
             {reportData?.funnel &&
@@ -217,11 +217,11 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
                           stage === 'ACCEPTED'
                             ? 'bg-emerald-500'
                             : stage === 'OFFERED'
-                            ? 'bg-teal-500'
+                            ? 'bg-cyan-500'
                             : stage === 'INTERVIEWED' || stage === 'INTERVIEW_SCHEDULED'
-                            ? 'bg-indigo-500'
+                            ? 'bg-teal-600'
                             : stage === 'SHORTLISTED'
-                            ? 'bg-blue-500'
+                            ? 'bg-cyan-600'
                             : 'bg-slate-400'
                         }`}
                         style={{ width: `${Math.max(pct, count > 0 ? 8 : 0)}%` }}
@@ -262,7 +262,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
                         <span className="font-bold text-slate-800">{b.placement_rate}%</span>
                         <div className="w-20 bg-slate-100 rounded-full h-1.5 overflow-hidden">
                           <div
-                            className="bg-indigo-600 h-full rounded-full"
+                            className="bg-teal-700 h-full rounded-full"
                             style={{ width: `${b.placement_rate}%` }}
                           ></div>
                         </div>
@@ -325,7 +325,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
             <button
               onClick={() => setAuditSubTab('DECISIONS')}
               className={`px-3 py-1.5 rounded-lg transition ${
-                auditSubTab === 'DECISIONS' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                auditSubTab === 'DECISIONS' ? 'bg-white text-teal-800 shadow-sm' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Eligibility Decisions Audit ({audits?.eligibility_decisions.length || 0})
@@ -334,7 +334,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
             <button
               onClick={() => setAuditSubTab('STATUS_HISTORY')}
               className={`px-3 py-1.5 rounded-lg transition ${
-                auditSubTab === 'STATUS_HISTORY' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                auditSubTab === 'STATUS_HISTORY' ? 'bg-white text-teal-800 shadow-sm' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Application Status History ({audits?.status_history.length || 0})
@@ -343,7 +343,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
             <button
               onClick={() => setAuditSubTab('NOTIFICATIONS')}
               className={`px-3 py-1.5 rounded-lg transition ${
-                auditSubTab === 'NOTIFICATIONS' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                auditSubTab === 'NOTIFICATIONS' ? 'bg-white text-teal-800 shadow-sm' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Notification Logs ({audits?.notification_logs.length || 0})
@@ -414,7 +414,7 @@ export const CoordinatorPortal: React.FC<CoordinatorPortalProps> = ({ onDataChan
                         <td className="py-3 px-4">
                           <span className="text-slate-400">{h.old_status || 'INITIAL'}</span>
                           <span className="mx-1.5 font-bold text-slate-600">➔</span>
-                          <span className="font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                          <span className="font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded">
                             {h.new_status}
                           </span>
                         </td>

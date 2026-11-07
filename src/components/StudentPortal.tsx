@@ -153,7 +153,7 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center space-x-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-indigo-800 flex items-center justify-center text-white font-black text-xl shadow-md shadow-indigo-600/30">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-600 to-cyan-800 flex items-center justify-center text-white font-black text-xl shadow-md shadow-teal-600/25">
               {selectedStudent?.full_name?.charAt(0) || 'S'}
             </div>
             <div>
@@ -183,7 +183,7 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
             <select
               value={selectedStudentId}
               onChange={e => setSelectedStudentId(parseInt(e.target.value, 10))}
-              className="text-xs font-medium bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="text-xs font-medium bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               {students.map(s => (
                 <option key={s.student_id} value={s.student_id}>
@@ -250,36 +250,36 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
           onClick={() => setActiveTab('DRIVES')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'DRIVES'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <Briefcase className="w-4 h-4" />
-          <span>Open Placement Drives ({jobs.length})</span>
+          <span>Available Opportunities ({jobs.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('APPLICATIONS')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'APPLICATIONS'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <FileCheck className="w-4 h-4" />
-          <span>My Applications ({applications.length})</span>
+          <span>Application Tracker ({applications.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('OFFERS')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'OFFERS'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <Award className="w-4 h-4" />
-          <span>Official Offers ({offers.length})</span>
+          <span>Offer Letters ({offers.length})</span>
         </button>
       </div>
 
@@ -299,13 +299,13 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
                   isApplied
                     ? 'border-slate-300 bg-slate-50/50'
                     : isEligible
-                    ? 'border-indigo-200 ring-1 ring-indigo-100 hover:shadow-md'
+                    ? 'border-teal-200 ring-1 ring-teal-100 hover:shadow-md'
                     : 'border-slate-200 opacity-90'
                 }`}
               >
                 <div className="flex items-start justify-between">
                   <div>
-                    <span className="text-xs font-bold text-indigo-600 tracking-wider uppercase">
+                    <span className="text-xs font-bold text-teal-700 tracking-wider uppercase">
                       {job.company_name}
                     </span>
                     <h3 className="text-lg font-bold text-slate-900 mt-0.5">{job.role_title}</h3>
@@ -352,9 +352,9 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
                 <div className="mt-4 pt-4 border-t border-slate-100">
                   <button
                     onClick={() => setExpandedJobId(isExpanded ? null : job.job_id)}
-                    className="flex items-center justify-between w-full text-xs font-semibold text-slate-700 hover:text-indigo-600 transition"
+                    className="flex items-center justify-between w-full text-xs font-semibold text-slate-700 hover:text-teal-700 transition"
                   >
-                    <span>Check 4-Step Eligibility Rules</span>
+                    <span>View Eligibility Checklist</span>
                     {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
 
@@ -418,12 +418,12 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
                       disabled={!isEligible || applyingJobId === job.job_id}
                       className={`w-full py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2 ${
                         isEligible
-                          ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-600/30'
+                          ? 'bg-teal-700 hover:bg-teal-800 text-white shadow-md shadow-teal-600/25'
                           : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                       }`}
                     >
                       <Send className="w-3.5 h-3.5" />
-                      <span>{applyingJobId === job.job_id ? 'Submitting Application...' : 'Apply For Drive'}</span>
+                      <span>{applyingJobId === job.job_id ? 'Submitting Application...' : 'Submit Application'}</span>
                     </button>
                   )}
                 </div>
@@ -455,7 +455,7 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
-                      <span className="text-xs font-bold text-indigo-600 uppercase">
+                      <span className="text-xs font-bold text-teal-700 uppercase">
                         {app.job.company_name}
                       </span>
                       <h3 className="text-lg font-bold text-slate-900">{app.job.role_title}</h3>
@@ -465,7 +465,7 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
                     </div>
 
                     <div>
-                      <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-800 border border-indigo-200">
+                      <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-800 border border-teal-200">
                         Current Status: {app.status}
                       </span>
                     </div>
@@ -474,7 +474,7 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
                   {/* Visual 6-Step Funnel Progress Stepper */}
                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                     <span className="text-xs font-bold text-slate-600 block mb-3 uppercase tracking-wider">
-                      Application Lifecycle Progress
+                      Progress Timeline
                     </span>
                     <div className="grid grid-cols-2 sm:grid-cols-6 gap-2">
                       {stepsOrder.map((step, idx) => {
@@ -486,7 +486,7 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
                             key={step}
                             className={`p-2.5 rounded-lg border text-center transition ${
                               isCurrent
-                                ? 'bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-300'
+                                ? 'bg-teal-700 text-white border-indigo-600 shadow-md ring-2 ring-teal-300'
                                 : isDone
                                 ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                                 : 'bg-white text-slate-400 border-slate-200'
@@ -504,19 +504,19 @@ export const StudentPortal: React.FC<StudentPortalProps> = ({ onDataChanged }) =
 
                   {/* Scheduled Interviews Section */}
                   {app.interviews.length > 0 && (
-                    <div className="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-900 mb-2 flex items-center space-x-1.5">
-                        <Calendar className="w-4 h-4 text-indigo-600" />
-                        <span>Scheduled Interview Rounds</span>
+                    <div className="bg-teal-50/60 p-4 rounded-xl border border-teal-100">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-teal-950 mb-2 flex items-center space-x-1.5">
+                        <Calendar className="w-4 h-4 text-teal-700" />
+                        <span>Interview Schedule</span>
                       </h4>
                       <div className="space-y-2">
                         {app.interviews.map(slot => (
                           <div
                             key={slot.interview_slot_id}
-                            className="bg-white p-3 rounded-lg border border-indigo-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
+                            className="bg-white p-3 rounded-lg border border-teal-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
                           >
                             <div>
-                              <span className="font-bold text-xs text-indigo-700">
+                              <span className="font-bold text-xs text-teal-800">
                                 Round {slot.round_number}:
                               </span>
                               <span className="text-xs font-medium text-slate-800 ml-1.5">

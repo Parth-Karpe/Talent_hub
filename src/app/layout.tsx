@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "TalentHub - Campus Placement Platform",
-  description: "End-to-end campus placement management platform for students, company recruiters, and placement coordinators.",
+  description: "A refreshed workspace for campus recruitment — student applications, recruiter workflows, and placement office analytics.",
 };
 
 export default function RootLayout({

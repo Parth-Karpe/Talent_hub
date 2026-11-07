@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { GraduationCap, Building2, BarChart3, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { GraduationCap, Building2, BarChart3, RefreshCw, Link2 } from 'lucide-react';
 
 interface HeaderProps {
   currentRole: 'STUDENT' | 'COMPANY' | 'COORDINATOR';
@@ -14,81 +14,71 @@ export const Header: React.FC<HeaderProps> = ({
   currentRole,
   onRoleChange,
   onReset,
-  resetLoading
+  resetLoading,
 }) => {
+  const tabBase =
+    'flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold transition-all';
+  const active = 'bg-teal-700 text-white shadow-sm';
+  const inactive = 'text-slate-600 hover:text-slate-900 hover:bg-white';
+
   return (
-    <header className="bg-slate-900 text-white border-b border-slate-800 shadow-md sticky top-0 z-50">
+    <header className="sticky top-0 z-50 border-b border-teal-100/80 bg-white/85 backdrop-blur">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo & Platform Title */}
-          <div className="flex items-center space-x-3">
-            <div className="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-500/30">
-              <GraduationCap className="w-6 h-6" />
+        <div className="flex flex-wrap items-center justify-between gap-3 py-3">
+          <div className="flex items-center gap-3">
+            <div className="rounded-xl bg-teal-700 p-2.5 text-white shadow-sm">
+              <Link2 className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center space-x-2">
-                <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-lg font-extrabold tracking-tight text-slate-900">
                   TalentHub
                 </span>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-900/80 text-indigo-300 border border-indigo-700">
+                <span className="rounded-full border border-teal-200 bg-teal-50 px-2 py-0.5 text-[11px] font-semibold text-teal-800">
                   Campus Placement Platform
                 </span>
               </div>
-              <p className="text-xs text-slate-400">2026–27 Placement Season · Active</p>
+              <p className="text-xs text-slate-500">2026–27 season dashboard</p>
             </div>
           </div>
 
-          {/* Quick Role Switcher */}
-          <div className="flex items-center bg-slate-800/80 p-1.5 rounded-xl border border-slate-700 space-x-1">
+          <nav className="flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-50 p-1">
             <button
+              type="button"
               onClick={() => onRoleChange('STUDENT')}
-              className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                currentRole === 'STUDENT'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/40'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
-              }`}
+              className={`${tabBase} ${currentRole === 'STUDENT' ? active : inactive}`}
             >
               <GraduationCap className="w-4 h-4" />
-              <span>Student (Rahul)</span>
+              <span>Student</span>
             </button>
-
             <button
+              type="button"
               onClick={() => onRoleChange('COMPANY')}
-              className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                currentRole === 'COMPANY'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/40'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
-              }`}
+              className={`${tabBase} ${currentRole === 'COMPANY' ? active : inactive}`}
             >
               <Building2 className="w-4 h-4" />
-              <span>Company (ABC Tech)</span>
+              <span>Recruiter</span>
             </button>
-
             <button
+              type="button"
               onClick={() => onRoleChange('COORDINATOR')}
-              className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                currentRole === 'COORDINATOR'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/40'
-                  : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
-              }`}
+              className={`${tabBase} ${currentRole === 'COORDINATOR' ? active : inactive}`}
             >
               <BarChart3 className="w-4 h-4" />
-              <span>Placement Coordinator</span>
+              <span>Coordinator</span>
             </button>
-          </div>
+          </nav>
 
-          {/* Reset Demo State Action */}
-          <div>
-            <button
-              onClick={onReset}
-              disabled={resetLoading}
-              className="flex items-center space-x-1.5 text-xs text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-700 transition"
-              title="Reset data store to clean baseline from scenario"
-            >
-              <RefreshCw className={`w-3.5 h-3.5 ${resetLoading ? 'animate-spin' : ''}`} />
-              <span>Reset Demo</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={onReset}
+            disabled={resetLoading}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition hover:border-teal-200 hover:text-teal-800 disabled:opacity-60"
+            title="Reset data store to clean baseline from scenario"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${resetLoading ? 'animate-spin' : ''}`} />
+            <span>Reset Demo</span>
+          </button>
         </div>
       </div>
     </header>

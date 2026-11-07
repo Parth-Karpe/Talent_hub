@@ -55,7 +55,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
   const [venue, setVenue] = useState('Campus Placement Cell Block B, Lab 2');
   const [interviewNotes, setInterviewNotes] = useState('Technical Coding & Systems Evaluation');
 
-  // Issue Offer modal state
+  // Send Offer modal state
   const [showOfferModal, setShowOfferModal] = useState(false);
   const [offerAppId, setOfferAppId] = useState<number | null>(null);
   const [offerPackage, setOfferPackage] = useState('12.5');
@@ -266,14 +266,14 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center space-x-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-800 flex items-center justify-center text-white font-black text-xl shadow-md shadow-blue-600/30">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-600 to-teal-800 flex items-center justify-center text-white font-black text-xl shadow-md shadow-sky-600/25">
               <Building2 className="w-7 h-7" />
             </div>
             <div>
               <div className="flex items-center space-x-3">
                 <h1 className="text-xl font-bold text-slate-900">{selectedCompany?.company_name}</h1>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">
-                  Employer Portal
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-100 text-sky-900 border border-sky-200">
+                  Recruiter Workspace
                 </span>
               </div>
               <p className="text-xs text-slate-500 mt-0.5">
@@ -288,7 +288,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
             <select
               value={selectedCompanyId}
               onChange={e => setSelectedCompanyId(parseInt(e.target.value, 10))}
-              className="text-xs font-medium bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-xs font-medium bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               {companies.map(c => (
                 <option key={c.company_id} value={c.company_id}>
@@ -307,7 +307,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
               <select
                 value={selectedJobId}
                 onChange={e => setSelectedJobId(parseInt(e.target.value, 10))}
-                className="text-xs font-bold bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="text-xs font-bold bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500"
               >
                 {jobs.map(j => (
                   <option key={j.job_id} value={j.job_id}>
@@ -322,10 +322,10 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
 
           <button
             onClick={() => setShowNewDriveModal(true)}
-            className="flex items-center space-x-2 text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl shadow-md shadow-indigo-600/30 transition"
+            className="flex items-center space-x-2 text-xs font-bold bg-teal-700 hover:bg-teal-800 text-white px-4 py-2 rounded-xl shadow-md shadow-teal-600/25 transition"
           >
             <PlusCircle className="w-4 h-4" />
-            <span>Post New Recruitment Drive</span>
+            <span>Create Hiring Drive</span>
           </button>
         </div>
       </div>
@@ -405,48 +405,48 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
           onClick={() => setActiveTab('CANDIDATES')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'CANDIDATES'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <Users className="w-4 h-4" />
-          <span>Applicants & Shortlisting ({applications.length})</span>
+          <span>Candidates & Shortlist ({applications.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('INTERVIEWS')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'INTERVIEWS'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <Calendar className="w-4 h-4" />
-          <span>Interview Management</span>
+          <span>Interview Rounds</span>
         </button>
 
         <button
           onClick={() => setActiveTab('OFFERS')}
           className={`flex items-center space-x-2 pb-3 px-4 text-sm font-semibold border-b-2 transition ${
             activeTab === 'OFFERS'
-              ? 'border-indigo-600 text-indigo-600'
+              ? 'border-teal-600 text-teal-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
           <Award className="w-4 h-4" />
-          <span>Issue Offers</span>
+          <span>Send Offers</span>
         </button>
       </div>
 
       {/* TAB 1: CANDIDATES & 1-CLICK ATOMIC SHORTLISTING */}
       {activeTab === 'CANDIDATES' && (
         <div className="space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-indigo-50/60 p-4 rounded-xl border border-indigo-100">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-teal-50/60 p-4 rounded-xl border border-teal-100">
             <div>
-              <h3 className="text-sm font-bold text-indigo-950">
+              <h3 className="text-sm font-bold text-teal-950">
                 Applicant Pool for {currentJob?.role_title || 'Selected Drive'}
               </h3>
-              <p className="text-xs text-indigo-700 mt-0.5">
+              <p className="text-xs text-teal-800 mt-0.5">
                 Eligibility criteria: Min CGPA {currentJob?.min_cgpa}, Max Backlogs {currentJob?.max_backlogs}, Allowed: {currentJob?.allowed_branches?.length ? currentJob.allowed_branches.join(', ') : 'All Branches'}.
               </p>
             </div>
@@ -454,10 +454,10 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
             <button
               onClick={handleRunShortlisting}
               disabled={shortlistingLoading || applications.length === 0}
-              className="flex items-center space-x-2 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-indigo-600/30 transition disabled:opacity-50"
+              className="flex items-center space-x-2 bg-gradient-to-r from-teal-700 to-cyan-700 hover:from-teal-800 hover:to-cyan-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-teal-600/25 transition disabled:opacity-50"
             >
               <Zap className={`w-4 h-4 ${shortlistingLoading ? 'animate-spin' : ''}`} />
-              <span>{shortlistingLoading ? 'Evaluating...' : '1-Click Atomic Shortlisting'}</span>
+              <span>{shortlistingLoading ? 'Evaluating...' : 'Run Eligibility Shortlist'}</span>
             </button>
           </div>
 
@@ -503,11 +503,11 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                             app.status === 'ACCEPTED'
                               ? 'bg-emerald-100 text-emerald-800'
                               : app.status === 'OFFERED'
-                              ? 'bg-blue-100 text-blue-800'
+                              ? 'bg-sky-100 text-sky-900'
                               : app.status === 'INTERVIEWED' || app.status === 'INTERVIEW_SCHEDULED'
-                              ? 'bg-purple-100 text-purple-800'
+                              ? 'bg-violet-100 text-violet-900'
                               : app.status === 'SHORTLISTED'
-                              ? 'bg-indigo-100 text-indigo-800'
+                              ? 'bg-teal-100 text-teal-900'
                               : 'bg-slate-100 text-slate-700'
                           }`}>
                             {app.status}
@@ -520,9 +520,9 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                                 setTargetAppId(app.application_id);
                                 setShowScheduleModal(true);
                               }}
-                              className="px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-[11px] border border-indigo-200 transition"
+                              className="px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-teal-800 font-bold text-[11px] border border-indigo-200 transition"
                             >
-                              Schedule Round
+                              Plan Interview
                             </button>
                           )}
 
@@ -534,7 +534,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                               }}
                               className="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold text-[11px] border border-emerald-200 transition"
                             >
-                              Issue Offer
+                              Send Offer
                             </button>
                           )}
                         </td>
@@ -559,7 +559,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                 <Calendar className="w-12 h-12 text-slate-300 mx-auto mb-3" />
                 <h3 className="text-base font-bold text-slate-800">No interview rounds scheduled</h3>
                 <p className="text-xs text-slate-500 mt-1">
-                  Shortlist applicants and click &ldquo;Schedule Round&rdquo; to set up interview slots.
+                  Shortlist applicants and click &ldquo;Plan Interview&rdquo; to set up interview slots.
                 </p>
               </div>
             ) : (
@@ -571,7 +571,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                   >
                     <div className="flex items-start justify-between">
                       <div>
-                        <span className="text-[11px] font-bold text-indigo-600 uppercase">
+                        <span className="text-[11px] font-bold text-teal-700 uppercase">
                           Round {slot.round_number}
                         </span>
                         <h4 className="text-base font-bold text-slate-900 mt-0.5">
@@ -689,7 +689,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
       {showNewDriveModal && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-2xl p-6 max-w-lg w-full shadow-2xl space-y-4">
-            <h3 className="text-lg font-bold text-slate-900">Post New Recruitment Drive</h3>
+            <h3 className="text-lg font-bold text-slate-900">Create Hiring Drive</h3>
             <form onSubmit={handleCreateDrive} className="space-y-4 text-xs">
               <div>
                 <label className="font-semibold text-slate-700 block mb-1">Role Title</label>
@@ -699,7 +699,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                   placeholder="e.g. Associate Software Engineer"
                   value={newRoleTitle}
                   onChange={e => setNewRoleTitle(e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 />
               </div>
 
@@ -714,7 +714,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                     required
                     value={newMinCgpa}
                     onChange={e => setNewMinCgpa(e.target.value)}
-                    className="w-full border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500"
                   />
                 </div>
 
@@ -726,7 +726,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                     required
                     value={newMaxBacklogs}
                     onChange={e => setNewMaxBacklogs(e.target.value)}
-                    className="w-full border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500"
                   />
                 </div>
               </div>
@@ -738,7 +738,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                   required
                   value={newDriveDate}
                   onChange={e => setNewDriveDate(e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-slate-300 rounded-lg p-2.5 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 />
               </div>
 
@@ -760,7 +760,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                       }}
                       className={`px-3 py-1.5 rounded-lg font-bold transition ${
                         newBranches.includes(b)
-                          ? 'bg-indigo-600 text-white'
+                          ? 'bg-teal-700 text-white'
                           : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                       }`}
                     >
@@ -780,9 +780,9 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition"
+                  className="px-4 py-2 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-bold transition"
                 >
-                  Publish Drive
+                  Create Drive
                 </button>
               </div>
             </form>
@@ -850,7 +850,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold"
+                  className="px-4 py-2 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-bold"
                 >
                   Confirm Slot
                 </button>
@@ -945,7 +945,7 @@ export const CompanyPortal: React.FC<CompanyPortalProps> = ({ onDataChanged }) =
                   type="submit"
                   className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold"
                 >
-                  Issue Offer
+                  Send Offer
                 </button>
               </div>
             </form>
